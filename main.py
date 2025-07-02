@@ -21,7 +21,7 @@ def check_follow():
         return jsonify({"error": "Invalid user IDs"}), 400
 
     response, code = check_mutual_follow(id_user_1, id_user_2)
-    return jsonify(response), code
+    return jsonify(response), code #
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080, debug=True)
