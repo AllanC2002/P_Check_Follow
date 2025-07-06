@@ -1,4 +1,4 @@
-# Chechk Follow Microservice
+# Check Follow Microservice
 
 This project is a Python-based backend service built with Flask. It provides an API endpoint to check if two users mutually follow each other. The application interacts with a MySQL database to store and retrieve user and follower information.
 
