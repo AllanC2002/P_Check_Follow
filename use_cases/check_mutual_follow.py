@@ -1,8 +1,9 @@
-from models.models import Followers
-from conections.mysql import conection_userprofile
+# app/use_cases/check_mutual_follow.py
+from infrastructure.db.mysql_connection import get_userprofile_session
+from infrastructure.db.mysql_models import Followers
 
 def check_mutual_follow(id_user_1, id_user_2):
-    session = conection_userprofile()
+    session = get_userprofile_session()
 
     follow_1_to_2 = session.query(Followers).filter_by(
         Id_Follower=id_user_1, Id_Following=id_user_2, Status=1

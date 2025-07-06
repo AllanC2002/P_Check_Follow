@@ -1,13 +1,10 @@
-from flask import Flask, request, jsonify
-from services.functions import check_mutual_follow
-import os
-from dotenv import load_dotenv
+# app/interface/controllers/follow_controller.py
+from flask import Blueprint, request, jsonify
+from use_cases.check_mutual_follow import check_mutual_follow
 
-load_dotenv()
+bp = Blueprint("follow_controller", __name__)
 
-app = Flask(__name__)
-
-@app.route('/check-follow', methods=['POST'])
+@bp.route('/check-follow', methods=['POST'])
 def check_follow():
     data = request.get_json()
 
@@ -21,7 +18,4 @@ def check_follow():
         return jsonify({"error": "Invalid user IDs"}), 400
 
     response, code = check_mutual_follow(id_user_1, id_user_2)
-    return jsonify(response), code #
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, debug=True)
+    return jsonify(response), code
